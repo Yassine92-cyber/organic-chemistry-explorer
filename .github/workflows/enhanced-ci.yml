@@ -132,7 +132,7 @@ jobs:
           pytest tests/test_performance.py --benchmark-only --benchmark-json=benchmark.json
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
           file: backend/coverage.xml
           flags: backend
@@ -198,7 +198,7 @@ jobs:
           npx vite-bundle-analyzer dist --analyze
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
           file: coverage/lcov.info
           flags: frontend
