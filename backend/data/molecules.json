@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Benzyl alcohol",
+    "smiles": "c1ccccc1CO",
+    "source": "Sigma-Aldrich",
+    "price": 25.5,
+    "purity": 99.0,
+    "cas": "100-51-6",
+    "catalog_number": "B1032",
+    "notes": "Common reagent",
+    "id": "mol_1"
+  },
+  {
+    "name": "Acetic acid",
+    "smiles": "CC(=O)O",
+    "source": "Fisher Scientific",
+    "price": 15.75,
+    "purity": 99.7,
+    "cas": "64-19-7",
+    "catalog_number": "A38-500",
+    "notes": "Glacial acetic acid",
+    "id": "mol_2"
+  },
+  {
+    "name": "Benzyl alcohol",
+    "smiles": "c1ccccc1CO",
+    "source": "Sigma-Aldrich",
+    "price": 25.5,
+    "purity": 99.0,
+    "cas": "100-51-6",
+    "catalog_number": "B1032",
+    "notes": "Common reagent",
+    "id": "mol_3"
+  },
+  {
+    "name": "Acetic acid",
+    "smiles": "CC(=O)O",
+    "source": "Fisher Scientific",
+    "price": 15.75,
+    "purity": 99.7,
+    "cas": "64-19-7",
+    "catalog_number": "A38-500",
+    "notes": "Glacial acetic acid",
+    "id": "mol_4"
+  },
+  {
+    "name": "Toluene",
+    "smiles": "c1ccccc1C",
+    "source": "Sigma-Aldrich",
+    "price": 12.3,
+    "purity": 99.8,
+    "cas": "108-88-3",
+    "catalog_number": "T324",
+    "notes": "Common solvent",
+    "id": "mol_5"
+  },
+  {
+    "name": "Benzene",
+    "smiles": "c1ccccc1",
+    "source": "Sigma-Aldrich",
+    "price": 8.9,
+    "purity": 99.9,
+    "cas": "71-43-2",
+    "catalog_number": "B1794",
+    "notes": "Common solvent",
+    "id": "mol_6"
+  },
+  {
+    "name": "Phenol",
+    "smiles": "c1ccccc1O",
+    "source": "Sigma-Aldrich",
+    "price": 18.2,
+    "purity": 99.0,
+    "cas": "108-95-2",
+    "catalog_number": "P1037",
+    "notes": "Common reagent ",
+    "id": "mol_7"
+  }
+]

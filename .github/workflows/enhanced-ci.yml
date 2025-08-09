@@ -1,0 +1,413 @@
+name: Enhanced CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run security scans weekly
+    - cron: '0 2 * * 1'
+
+env:
+  NODE_VERSION: '18'
+  PYTHON_VERSION: '3.11'
+  PNPM_VERSION: '8'
+
+jobs:
+  # Security and dependency scanning
+  security-scan:
+    name: 🔒 Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install Python dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Run Bandit security scanner
+        run: |
+          cd backend
+          bandit -r app/ -f json -o bandit-report.json
+          bandit -r app/ || exit 0  # Don't fail on warnings
+
+      - name: Run Safety vulnerability scanner
+        run: |
+          cd backend
+          safety check --json --output safety-report.json || exit 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Install frontend dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run npm audit
+        run: |
+          npm audit --audit-level=moderate --json > npm-audit.json || exit 0
+
+      - name: Upload security reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-reports
+          path: |
+            backend/bandit-report.json
+            backend/safety-report.json
+            npm-audit.json
+
+  # Backend testing and quality
+  backend-quality:
+    name: 🐍 Backend Quality
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Ruff linting
+        run: |
+          cd backend
+          ruff check app/ --output-format=github
+
+      - name: Run Black formatting check
+        run: |
+          cd backend
+          black --check --diff app/
+
+      - name: Run type checking with mypy
+        run: |
+          cd backend
+          mypy app/ --ignore-missing-imports
+
+      - name: Run tests with coverage
+        run: |
+          cd backend
+          pytest tests/ \
+            --cov=app \
+            --cov-report=xml \
+            --cov-report=html \
+            --cov-fail-under=80 \
+            --junit-xml=pytest-results.xml
+
+      - name: Run performance benchmarks
+        run: |
+          cd backend
+          pytest tests/test_performance.py --benchmark-only --benchmark-json=benchmark.json
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: backend/coverage.xml
+          flags: backend
+          name: backend-coverage
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: backend-test-results-${{ matrix.python-version }}
+          path: |
+            backend/pytest-results.xml
+            backend/htmlcov/
+            backend/benchmark.json
+
+  # Frontend testing and quality
+  frontend-quality:
+    name: ⚛️ Frontend Quality
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run TypeScript type checking
+        run: pnpm type-check
+
+      - name: Run ESLint
+        run: pnpm lint:check
+
+      - name: Run Prettier formatting check
+        run: pnpm format:check
+
+      - name: Run tests with coverage
+        run: pnpm test:coverage
+
+      - name: Build application
+        run: pnpm build:production
+
+      - name: Analyze bundle size
+        run: |
+          npx vite-bundle-analyzer dist --analyze
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: coverage/lcov.info
+          flags: frontend
+          name: frontend-coverage
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: frontend-build
+          path: |
+            dist/
+            coverage/
+
+  # Integration testing
+  integration-tests:
+    name: 🔗 Integration Tests
+    runs-on: ubuntu-latest
+    needs: [backend-quality, frontend-quality]
+    
+    services:
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Install frontend dependencies
+        run: |
+          npm install -g pnpm@${{ env.PNPM_VERSION }}
+          pnpm install --frozen-lockfile
+
+      - name: Start backend server
+        run: |
+          cd backend
+          python start_main_server.py &
+          sleep 10
+
+      - name: Wait for backend health check
+        run: |
+          timeout 30 bash -c 'until curl -f http://localhost:8000/health; do sleep 1; done'
+
+      - name: Build frontend
+        run: pnpm build
+
+      - name: Start frontend server
+        run: |
+          pnpm preview &
+          sleep 5
+
+      - name: Run integration tests
+        run: |
+          cd backend
+          pytest tests/test_integration.py -v
+
+      - name: Run API endpoint tests
+        run: |
+          cd backend
+          python test_kb_endpoints.py
+          python test_multi_step_demo.py
+
+  # Performance testing
+  performance-tests:
+    name: ⚡ Performance Tests
+    runs-on: ubuntu-latest
+    needs: [integration-tests]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+          pip install locust
+
+      - name: Start backend server
+        run: |
+          cd backend
+          python start_main_server.py &
+          sleep 10
+
+      - name: Run load tests
+        run: |
+          cd backend
+          locust -f tests/locustfile.py --headless --users 10 --spawn-rate 2 --run-time 60s --host http://localhost:8000
+
+  # Security SAST scanning
+  security-sast:
+    name: 🛡️ SAST Security Scan
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run CodeQL Analysis
+        uses: github/codeql-action/init@v2
+        with:
+          languages: python, javascript
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+  # Container security
+  container-security:
+    name: 🐳 Container Security
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t retrosynthesis-app:${{ github.sha }} .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'retrosynthesis-app:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  # Deployment readiness
+  deployment-check:
+    name: 🚀 Deployment Check
+    runs-on: ubuntu-latest
+    needs: [security-scan, backend-quality, frontend-quality, integration-tests]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check deployment readiness
+        run: |
+          echo "✅ All quality gates passed"
+          echo "✅ Security scans completed"
+          echo "✅ Integration tests passed"
+          echo "🚀 Ready for deployment"
+
+      - name: Create deployment artifact
+        run: |
+          mkdir -p deployment
+          echo "Deployment ready at $(date)" > deployment/READY
+          echo "Commit: ${{ github.sha }}" >> deployment/READY
+          echo "Branch: ${{ github.ref_name }}" >> deployment/READY
+
+      - name: Upload deployment artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-ready
+          path: deployment/
+
+  # Notification
+  notify:
+    name: 📱 Notify
+    runs-on: ubuntu-latest
+    needs: [deployment-check]
+    if: always()
+    
+    steps:
+      - name: Notify success
+        if: needs.deployment-check.result == 'success'
+        run: |
+          echo "🎉 Pipeline succeeded! Ready for deployment."
+
+      - name: Notify failure
+        if: needs.deployment-check.result == 'failure'
+        run: |
+          echo "❌ Pipeline failed. Check logs for details." 

@@ -1,0 +1,75 @@
+{
+  "cond_sn2_dmso_rt": {
+    "id": "cond_sn2_dmso_rt",
+    "name": "SN2 in DMSO at Room Temperature",
+    "reagents": [
+      "NaN3 (1.2 eq)"
+    ],
+    "solvent": "DMSO",
+    "temperature": "20\u201330 \u00b0C",
+    "time": "1\u20134 h",
+    "atmosphere": "ambient",
+    "workup": "quench with water, extract EtOAc, dry MgSO4",
+    "notes": "Increase nucleophile eq for hindered cases",
+    "refs": [
+      "ref_solvent_effects"
+    ],
+    "greenness_score": 0.6,
+    "safety_notes": "DMSO is hygroscopic, handle in fume hood"
+  },
+  "cond_e2_etoh_rt": {
+    "id": "cond_e2_etoh_rt",
+    "name": "E2 in Ethanol at Room Temperature",
+    "reagents": [
+      "KOH (1.5 eq)"
+    ],
+    "solvent": "EtOH",
+    "temperature": "20\u201325 \u00b0C",
+    "time": "2\u20136 h",
+    "atmosphere": "ambient",
+    "workup": "quench with water, extract Et2O, dry Na2SO4",
+    "notes": "Use excess base for complete conversion",
+    "refs": [
+      "ref_e2_classic"
+    ],
+    "greenness_score": 0.5,
+    "safety_notes": "Handle base carefully, corrosive"
+  },
+  "cond_da_heat": {
+    "id": "cond_da_heat",
+    "name": "Diels-Alder with Heating",
+    "reagents": [
+      "Lewis acid catalyst (optional)"
+    ],
+    "solvent": "toluene or neat",
+    "temperature": "80\u2013120 \u00b0C",
+    "time": "4\u201324 h",
+    "atmosphere": "N2 or air",
+    "workup": "cool, filter, recrystallize",
+    "notes": "High temperature often required for good yields",
+    "refs": [
+      "ref_da_classic"
+    ],
+    "greenness_score": 0.8,
+    "safety_notes": "High temperature reaction, use proper heating"
+  },
+  "cond_esterification": {
+    "id": "cond_esterification",
+    "name": "Esterification with DCC",
+    "reagents": [
+      "DCC (1.1 eq)",
+      "DMAP (0.1 eq)"
+    ],
+    "solvent": "DCM",
+    "temperature": "0-25 \u00b0C",
+    "time": "2-12 h",
+    "atmosphere": "N2",
+    "workup": "filter, wash with NaHCO3, dry MgSO4",
+    "notes": "Standard esterification conditions",
+    "refs": [
+      "ref_esterification"
+    ],
+    "greenness_score": 0.4,
+    "safety_notes": "DCC is a skin sensitizer"
+  }
+}

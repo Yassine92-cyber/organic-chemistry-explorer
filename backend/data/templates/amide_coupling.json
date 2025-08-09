@@ -1,0 +1,29 @@
+{
+  "template_id": "amide_coupling",
+  "name": "Amide Coupling",
+  "rxn_smarts": "[C:1][C:2](=[O:3])[OH:4].[NH2:5]>>[C:1][C:2](=[O:3])[NH:5].[OH:4]",
+  "scope": "Carboxylic acids with amines to form amides. Can use various coupling reagents like DCC, EDC, HATU, or acid chlorides.",
+  "limitations": "Requires coupling reagents or activation. Competing side reactions possible. Some substrates may be incompatible.",
+  "default_conditions_id": "amide_conditions",
+  "refs": ["ref_amide_coupling", "ref_coupling_reagents"],
+  "examples": [
+    {
+      "reactants": ["CC(=O)O", "NH2"],
+      "products": ["CC(=O)N", "OH"],
+      "description": "Acetic acid + ammonia to acetamide"
+    }
+  ],
+  "mechanism_type": "amide_formation",
+  "arrow_hints": [
+    {
+      "type": "lp_to_bond",
+      "from": "N",
+      "to": "C"
+    },
+    {
+      "type": "bond_to_atom",
+      "from": "C-OH",
+      "to": "OH"
+    }
+  ]
+} 

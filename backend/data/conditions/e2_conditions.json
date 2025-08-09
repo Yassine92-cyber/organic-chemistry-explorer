@@ -1,0 +1,16 @@
+{
+  "condition_id": "e2_conditions",
+  "name": "E2 Elimination Conditions",
+  "reagents": ["NaOH", "KOH", "NaOMe", "KOMe", "t-BuOK"],
+  "solvent": "EtOH",
+  "temperature": "25-80°C",
+  "time": "1-6 hours",
+  "catalyst": null,
+  "base": "NaOH",
+  "acid": null,
+  "oxidant": null,
+  "reductant": null,
+  "notes": "Strong base required. Anti-periplanar geometry essential. Zaitsev's rule predicts major product.",
+  "yield_range": "50-90%",
+  "scale": "mmol to mol"
+} 

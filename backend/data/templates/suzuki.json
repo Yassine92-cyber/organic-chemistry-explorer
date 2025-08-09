@@ -1,0 +1,29 @@
+{
+  "template_id": "suzuki",
+  "name": "Suzuki Cross-Coupling",
+  "rxn_smarts": "[C:1][B:2]([OH:3])[OH:4].[C:5][Br:6]>>[C:1][C:5].[B:2]([OH:3])[OH:4].[Br:6]",
+  "scope": "Aryl/vinyl boronic acids with aryl/vinyl halides. Palladium-catalyzed cross-coupling with broad substrate scope.",
+  "limitations": "Requires palladium catalyst and base. Boronic acids can be unstable. Some functional groups may interfere.",
+  "default_conditions_id": "suzuki_conditions",
+  "refs": ["ref_suzuki_coupling", "ref_palladium_catalysis"],
+  "examples": [
+    {
+      "reactants": ["c1ccccc1B(O)O", "c1ccccc1Br"],
+      "products": ["c1ccccc1c2ccccc2", "B(O)O", "Br"],
+      "description": "Phenylboronic acid + bromobenzene to biphenyl"
+    }
+  ],
+  "mechanism_type": "suzuki",
+  "arrow_hints": [
+    {
+      "type": "bond_to_bond",
+      "from": "C-B",
+      "to": "C-C"
+    },
+    {
+      "type": "bond_to_atom",
+      "from": "C-Br",
+      "to": "Br"
+    }
+  ]
+} 

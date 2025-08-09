@@ -1,0 +1,35 @@
+# Core FastAPI and Server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+
+# Data Processing and Chemistry
+rdkit-pypi==2023.3.1b1
+numpy==1.25.2
+pandas==2.1.3
+pyarrow==14.0.1
+
+# Security and Authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+slowapi==0.1.9
+cryptography==41.0.7
+
+# HTTP and API
+httpx==0.25.2
+requests==2.31.0
+python-multipart==0.0.6
+
+# Testing and Development
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+
+# Performance and Monitoring
+psutil==5.9.6
+
+# Code Quality (install separately to avoid conflicts)
+# bandit==1.7.5
+# safety==2.3.5
+# black==23.11.0
+# ruff==0.1.6 

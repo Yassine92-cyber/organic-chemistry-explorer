@@ -1,0 +1,16 @@
+{
+  "condition_id": "aldol_conditions",
+  "name": "Aldol Reaction Conditions",
+  "reagents": ["NaOH", "LDA", "NaH"],
+  "solvent": "THF",
+  "temperature": "-78°C",
+  "time": "1-6 hours",
+  "catalyst": null,
+  "base": "LDA",
+  "acid": null,
+  "oxidant": null,
+  "reductant": null,
+  "notes": "Low temperature often needed for enolate formation. Various bases give different selectivities.",
+  "yield_range": "50-85%",
+  "scale": "mmol to mol"
+} 

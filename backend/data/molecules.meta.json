@@ -1,0 +1,26 @@
+{
+  "total_molecules": 4,
+  "sources": {
+    "test_json": 4
+  },
+  "file_path": "data\\molecules.parquet",
+  "last_updated": "2025-08-08T18:36:37.333540",
+  "imports": {
+    "test_json": {
+      "count": 4,
+      "timestamp": "2025-08-08T18:36:45.130219"
+    },
+    "test_smi": {
+      "count": 4,
+      "timestamp": "2025-08-08T18:36:42.990210"
+    },
+    "test_csv": {
+      "count": 4,
+      "timestamp": "2025-08-08T18:36:40.871288"
+    },
+    "zinc_sub": {
+      "count": 5,
+      "timestamp": "2025-08-08T22:49:49.521478"
+    }
+  }
+}

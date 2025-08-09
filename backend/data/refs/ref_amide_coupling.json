@@ -1,0 +1,14 @@
+{
+  "ref_id": "ref_amide_coupling",
+  "title": "Peptide Coupling Reagents",
+  "authors": ["El-Faham, A.", "Albericio, F."],
+  "journal": "Chemical Reviews",
+  "year": 2011,
+  "volume": "111",
+  "pages": "6557-6602",
+  "doi": "10.1021/cr100048w",
+  "url": "https://doi.org/10.1021/cr100048w",
+  "abstract": "Comprehensive review of peptide coupling reagents and their applications.",
+  "keywords": ["amide coupling", "peptide synthesis", "coupling reagents", "DCC", "HATU"],
+  "citation": "El-Faham, A.; Albericio, F. Chem. Rev. 2011, 111, 6557-6602."
+} 

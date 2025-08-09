@@ -1,0 +1,16 @@
+{
+  "condition_id": "reductive_amination_conditions",
+  "name": "Reductive Amination Conditions",
+  "reagents": ["NaBH4", "NaBH3CN", "H2"],
+  "solvent": "MeOH",
+  "temperature": "25°C",
+  "time": "1-12 hours",
+  "catalyst": null,
+  "base": null,
+  "acid": "AcOH",
+  "oxidant": null,
+  "reductant": "NaBH4",
+  "notes": "Imine formation followed by reduction. NaBH3CN more selective than NaBH4.",
+  "yield_range": "60-90%",
+  "scale": "mmol to mol"
+} 

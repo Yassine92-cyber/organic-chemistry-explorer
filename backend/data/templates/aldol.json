@@ -1,0 +1,29 @@
+{
+  "template_id": "aldol",
+  "name": "Aldol Reaction",
+  "rxn_smarts": "[C:1]=[O:2].[C:3][C:4]=[O:5]>>[C:1][C:3][C:4](=[O:5])[OH:6]",
+  "scope": "Enolate addition to carbonyl compounds. Can be catalyzed by base or acid. Important for C-C bond formation.",
+  "limitations": "Retro-aldol can occur. Diastereoselectivity can be challenging. Some substrates may not form stable enolates.",
+  "default_conditions_id": "aldol_conditions",
+  "refs": ["ref_aldol_reaction", "ref_enolate_chemistry"],
+  "examples": [
+    {
+      "reactants": ["C=O", "CC=O"],
+      "products": ["CC(C=O)OH"],
+      "description": "Formaldehyde + acetaldehyde to 3-hydroxypropanal"
+    }
+  ],
+  "mechanism_type": "aldol",
+  "arrow_hints": [
+    {
+      "type": "lp_to_bond",
+      "from": "C",
+      "to": "C"
+    },
+    {
+      "type": "bond_to_bond",
+      "from": "C=O",
+      "to": "C-OH"
+    }
+  ]
+} 

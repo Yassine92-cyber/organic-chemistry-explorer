@@ -1,0 +1,16 @@
+{
+  "condition_id": "suzuki_conditions",
+  "name": "Suzuki Cross-Coupling Conditions",
+  "reagents": ["Pd(PPh3)4", "PdCl2(dppf)", "K2CO3", "Na2CO3"],
+  "solvent": "THF",
+  "temperature": "80°C",
+  "time": "2-24 hours",
+  "catalyst": "Pd(PPh3)4",
+  "base": "K2CO3",
+  "acid": null,
+  "oxidant": null,
+  "reductant": null,
+  "notes": "Various Pd catalysts available. Base choice important. Aqueous workup often needed.",
+  "yield_range": "60-95%",
+  "scale": "mmol to mol"
+} 

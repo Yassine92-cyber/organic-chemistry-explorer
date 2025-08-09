@@ -1,0 +1,16 @@
+{
+  "condition_id": "sn2_conditions",
+  "name": "SN2 Nucleophilic Substitution Conditions",
+  "reagents": ["NaOH", "KOH", "NaOMe", "KOMe"],
+  "solvent": "H2O",
+  "temperature": "25°C",
+  "time": "1-4 hours",
+  "catalyst": null,
+  "base": "NaOH",
+  "acid": null,
+  "oxidant": null,
+  "reductant": null,
+  "notes": "Polar aprotic solvents (DMF, DMSO) can accelerate reaction. Crown ethers can help with cation coordination.",
+  "yield_range": "60-95%",
+  "scale": "mmol to mol"
+} 

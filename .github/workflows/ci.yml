@@ -1,0 +1,380 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18'
+
+jobs:
+  # Backend Python Tests
+  backend-tests:
+    name: Backend Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install Python dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov ruff black
+          
+      - name: Run Python linting with Ruff
+        run: |
+          cd backend
+          ruff check . --fix
+          
+      - name: Check Python code formatting with Black
+        run: |
+          cd backend
+          black --check --diff .
+          
+      - name: Run Python tests
+        run: |
+          cd backend
+          python -m pytest tests/ -v --cov=app --cov-report=xml --cov-report=term-missing
+          
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./backend/coverage.xml
+          flags: backend
+          name: backend-coverage
+
+  # Frontend Node.js Tests
+  frontend-tests:
+    name: Frontend Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - name: Install dependencies
+        run: pnpm install
+        
+      - name: Run frontend tests
+        run: pnpm test:run
+        
+      - name: Run frontend linting
+        run: pnpm lint
+        
+      - name: Build frontend
+        run: pnpm build
+        
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: dist/
+          retention-days: 30
+
+  # Integration Tests (Backend + Frontend)
+  integration-tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: [backend-tests, frontend-tests]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install Python dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest requests
+          
+      - name: Start backend server
+        run: |
+          cd backend
+          python start_main_server.py &
+          sleep 10  # Wait for server to start
+          
+      - name: Run backend API tests
+        run: |
+          cd backend
+          python run_tests.py
+          
+      - name: Test API endpoints
+        run: |
+          # Test health endpoint
+          curl -f http://localhost:8000/health
+          
+          # Test one-step retrosynthesis
+          curl -X POST http://localhost:8000/retro/one_step \
+            -H "Content-Type: application/json" \
+            -d '{"smiles": "CCO", "max_results": 5}'
+            
+          # Test multi-step retrosynthesis
+          curl -X POST http://localhost:8000/retro/multi_step \
+            -H "Content-Type: application/json" \
+            -d '{"smiles": "CCO", "beam_width": 3, "max_depth": 2}'
+
+  # Main Branch Deployment
+  deploy-main:
+    name: Deploy to Main
+    runs-on: ubuntu-latest
+    needs: [backend-tests, frontend-tests, integration-tests]
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - name: Install dependencies
+        run: pnpm install
+        
+      - name: Build frontend for production
+        run: pnpm build
+        
+      - name: Upload production build
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-frontend
+          path: dist/
+          retention-days: 90
+          
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install Python dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest requests
+          
+      - name: Run full backend test suite
+        run: |
+          cd backend
+          python run_tests.py
+          
+      - name: Create deployment summary
+        run: |
+          echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Backend Tests" >> $GITHUB_STEP_SUMMARY
+          echo "- All Python tests passed" >> $GITHUB_STEP_SUMMARY
+          echo "- Code formatting checked with Black" >> $GITHUB_STEP_SUMMARY
+          echo "- Linting passed with Ruff" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Frontend Tests" >> $GITHUB_STEP_SUMMARY
+          echo "- All Vitest tests passed" >> $GITHUB_STEP_SUMMARY
+          echo "- Build completed successfully" >> $GITHUB_STEP_SUMMARY
+          echo "- Production artifacts uploaded" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Integration Tests" >> $GITHUB_STEP_SUMMARY
+          echo "- Backend API endpoints tested" >> $GITHUB_STEP_SUMMARY
+          echo "- Retrosynthesis functionality verified" >> $GITHUB_STEP_SUMMARY
+
+  # Security and Quality Checks
+  security-checks:
+    name: Security & Quality
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install security tools
+        run: |
+          pip install bandit safety
+          
+      - name: Run security audit with Bandit
+        run: |
+          cd backend
+          bandit -r . -f json -o bandit-report.json || true
+          
+      - name: Run dependency security check with Safety
+        run: |
+          cd backend
+          safety check --json --output safety-report.json || true
+          
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - name: Install dependencies
+        run: pnpm install
+        
+      - name: Run npm audit
+        run: pnpm audit --audit-level moderate
+
+  # Performance Tests
+  performance-tests:
+    name: Performance Tests
+    runs-on: ubuntu-latest
+    needs: [backend-tests]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install Python dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest-benchmark
+          
+      - name: Start backend server
+        run: |
+          cd backend
+          python start_main_server.py &
+          sleep 10
+          
+      - name: Run performance benchmarks
+        run: |
+          cd backend
+          python -m pytest tests/test_retro.py::TestRetrosynthesisAPI::test_performance_benchmarks -v
+          
+      - name: Check response times
+        run: |
+          # Test API response times
+          echo "Testing API response times..."
+          
+          # Health check
+          time curl -s http://localhost:8000/health > /dev/null
+          
+          # One-step retrosynthesis
+          time curl -s -X POST http://localhost:8000/retro/one_step \
+            -H "Content-Type: application/json" \
+            -d '{"smiles": "CCO", "max_results": 5}' > /dev/null
+          
+          # Multi-step retrosynthesis
+          timeout 30 curl -s -X POST http://localhost:8000/retro/multi_step \
+            -H "Content-Type: application/json" \
+            -d '{"smiles": "CCO", "beam_width": 3, "max_depth": 2}' > /dev/null
+
+  # Documentation Generation
+  docs:
+    name: Generate Documentation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install documentation tools
+        run: |
+          pip install pdoc3 mkdocs mkdocs-material
+          
+      - name: Generate API documentation
+        run: |
+          cd backend
+          pdoc --html --output-dir ../docs/api app
+          
+      - name: Upload documentation
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-documentation
+          path: docs/
+          retention-days: 30
+
+  # Notifications
+  notify:
+    name: Notify Results
+    runs-on: ubuntu-latest
+    needs: [backend-tests, frontend-tests, integration-tests, security-checks, performance-tests]
+    if: always()
+    
+    steps:
+      - name: Check job status
+        id: check
+        run: |
+          if [[ "${{ needs.backend-tests.result }}" == "success" && 
+                "${{ needs.frontend-tests.result }}" == "success" && 
+                "${{ needs.integration-tests.result }}" == "success" ]]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "message=✅ All tests passed successfully!" >> $GITHUB_OUTPUT
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "message=❌ Some tests failed. Please check the logs." >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Create status summary
+        run: |
+          echo "## 📊 CI/CD Pipeline Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Backend Tests | ${{ needs.backend-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Frontend Tests | ${{ needs.frontend-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Integration Tests | ${{ needs.integration-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security Checks | ${{ needs.security-checks.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Performance Tests | ${{ needs.performance-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.check.outputs.message }}" >> $GITHUB_STEP_SUMMARY 

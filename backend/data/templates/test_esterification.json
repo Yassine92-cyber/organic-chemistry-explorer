@@ -1,0 +1,16 @@
+{
+  "id": "test_esterification",
+  "name": "Test Esterification",
+  "rxn_smarts": "[C:1][C(=O)O:2].[C:3][O:4]>>[C:1][C(=O)[O:4][C:3]:2]",
+  "scope": "Carboxylic acids with alcohols to form esters",
+  "selectivity_notes": "Nucleophilic acyl substitution mechanism",
+  "default_conditions_id": "cond_esterification",
+  "scores": {
+    "feasibility": 0.7,
+    "greenness": 0.6,
+    "route_cost": 2.5
+  },
+  "refs": [
+    "ref_esterification"
+  ]
+}

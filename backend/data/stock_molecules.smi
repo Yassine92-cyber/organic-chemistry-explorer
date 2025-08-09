@@ -1,0 +1,258 @@
+# Stock Molecules for Retrosynthesis
+# Format: SMILES\tName\tCategory
+
+# Solvents
+CCO	Ethanol	Solvent
+CCOC	Diethyl ether	Solvent
+CC(C)O	Isopropanol	Solvent
+CC(C)(C)O	t-Butanol	Solvent
+C1CCCCC1	Cyclohexane	Solvent
+c1ccccc1	Benzene	Solvent
+CCOCC	Ethylene glycol	Solvent
+CC(=O)O	Acetic acid	Solvent
+CC(=O)OC	Methyl acetate	Solvent
+CCOC(=O)OC	Ethyl acetate	Solvent
+CCOC(=O)c1ccccc1	Ethyl benzoate	Solvent
+C1CCCCC1	Cyclohexane	Solvent
+C1CCCCCC1	Cycloheptane	Solvent
+C1CCCCCCC1	Cyclooctane	Solvent
+C1CCCCCCCC1	Cyclononane	Solvent
+C1CCCCCCCCC1	Cyclodecane	Solvent
+
+# Water and Related
+O	Water	Solvent
+[OH-]	Hydroxide	Base
+[O-]C	Methoxide	Base
+[O-]CC	Ethoxide	Base
+[O-]C(C)(C)C	t-Butoxide	Base
+
+# Bases
+[Na+]	Sodium cation	Base
+[K+]	Potassium cation	Base
+[Li+]	Lithium cation	Base
+[Ca+2]	Calcium cation	Base
+[Mg+2]	Magnesium cation	Base
+[NH4+]	Ammonium cation	Base
+[NH2-]	Amide anion	Base
+[NH-]	Imide anion	Base
+[N-]	Nitride anion	Base
+
+# Common Reagents
+CBr	Methyl bromide	Reagent
+CCBr	Ethyl bromide	Reagent
+CCCBr	Propyl bromide	Reagent
+CCCCBr	Butyl bromide	Reagent
+C(C)(C)Br	t-Butyl bromide	Reagent
+CCl	Methyl chloride	Reagent
+CCCl	Ethyl chloride	Reagent
+CCCCl	Propyl chloride	Reagent
+CCCCCl	Butyl chloride	Reagent
+C(C)(C)Cl	t-Butyl chloride	Reagent
+CI	Methyl iodide	Reagent
+CCI	Ethyl iodide	Reagent
+CCCI	Propyl iodide	Reagent
+CCCCI	Butyl iodide	Reagent
+C(C)(C)I	t-Butyl iodide	Reagent
+
+# Alcohols
+CO	Methanol	Alcohol
+CCO	Ethanol	Alcohol
+CCOC	Isopropanol	Alcohol
+CC(C)O	t-Butanol	Alcohol
+CCOCC	Ethylene glycol	Alcohol
+CCOCCO	Diethylene glycol	Alcohol
+CCOCCOCCO	Triethylene glycol	Alcohol
+CCOCCOCCOCCO	Tetraethylene glycol	Alcohol
+
+# Carboxylic Acids
+C(=O)O	Formic acid	Acid
+CC(=O)O	Acetic acid	Acid
+CCC(=O)O	Propionic acid	Acid
+CCCC(=O)O	Butyric acid	Acid
+C(C)(C)C(=O)O	Pivalic acid	Acid
+c1ccccc1C(=O)O	Benzoic acid	Acid
+C1CCCCC1C(=O)O	Cyclohexanecarboxylic acid	Acid
+
+# Amines
+N	Ammonia	Amine
+CN	Methylamine	Amine
+CCN	Ethylamine	Amine
+CCCN	Propylamine	Amine
+CCCCN	Butylamine	Amine
+C(C)(C)N	t-Butylamine	Amine
+c1ccccc1N	Aniline	Amine
+C1CCCCC1N	Cyclohexylamine	Amine
+
+# Protecting Groups
+C(=O)OC	Methyl ester	Protecting Group
+C(=O)OCC	Ethyl ester	Protecting Group
+C(=O)OC(C)(C)C	t-Butyl ester	Protecting Group
+C(=O)OCc1ccccc1	Benzyl ester	Protecting Group
+C(=O)OC1CCCCC1	Cyclohexyl ester	Protecting Group
+C(=O)OC1CCCCCC1	Cycloheptyl ester	Protecting Group
+C(=O)OC1CCCCCCC1	Cyclooctyl ester	Protecting Group
+
+# Halides
+F	Fluoride	Halide
+Cl	Chloride	Halide
+Br	Bromide	Halide
+I	Iodide	Halide
+
+# Nucleophiles
+[OH-]	Hydroxide	Nucleophile
+[SH-]	Hydrosulfide	Nucleophile
+[NH2-]	Amide anion	Nucleophile
+[NH-]	Imide anion	Nucleophile
+[N-]	Nitride anion	Nucleophile
+[O-]C	Methoxide	Nucleophile
+[O-]CC	Ethoxide	Nucleophile
+[O-]C(C)(C)C	t-Butoxide	Nucleophile
+[S-]C	Methanethiolate	Nucleophile
+[S-]CC	Ethanethiolate	Nucleophile
+
+# Leaving Groups
+[Br-]	Bromide	Leaving Group
+[Cl-]	Chloride	Leaving Group
+[I-]	Iodide	Leaving Group
+[F-]	Fluoride	Leaving Group
+[O-]S(=O)(=O)c1ccccc1	Tosylate	Leaving Group
+[O-]S(=O)(=O)CC	Tosylate	Leaving Group
+[O-]S(=O)(=O)CCC	Tosylate	Leaving Group
+
+# Common Building Blocks
+C#C	Acetylene	Building Block
+C=C	Ethene	Building Block
+C=CC	Propene	Building Block
+C=CCC	Butene	Building Block
+C=CCCC	Pentene	Building Block
+C=CCCCC	Hexene	Building Block
+C=CCCCCC	Heptene	Building Block
+C=CCCCCCC	Octene	Building Block
+
+# Aromatic Compounds
+c1ccccc1	Benzene	Aromatic
+c1ccc2ccccc2c1	Naphthalene	Aromatic
+c1ccc2c(c1)ccc1ccccc12	Anthracene	Aromatic
+c1ccc2c(c1)ccc1ccccc21	Phenanthrene	Aromatic
+c1ccc2c(c1)ccc1ccccc12	Phenanthrene	Aromatic
+
+# Heterocycles
+c1ccncc1	Pyridine	Heterocycle
+c1ccc2ncccc2c1	Quinoline	Heterocycle
+c1ccc2c(c1)cccn2	Isoquinoline	Heterocycle
+c1ccc2c(c1)cccn2	Isoquinoline	Heterocycle
+c1ccc2c(c1)cccn2	Isoquinoline	Heterocycle
+
+# Functional Groups
+C=O	Formaldehyde	Aldehyde
+CC=O	Acetaldehyde	Aldehyde
+CCC=O	Propionaldehyde	Aldehyde
+CCCC=O	Butyraldehyde	Aldehyde
+C(C)(C)C=O	Pivalaldehyde	Aldehyde
+c1ccccc1C=O	Benzaldehyde	Aldehyde
+
+# Ketones
+CC(=O)C	Acetone	Ketone
+CCC(=O)CC	Diethyl ketone	Ketone
+CCCC(=O)CCC	Dipropyl ketone	Ketone
+c1ccccc1C(=O)c2ccccc2	Benzophenone	Ketone
+
+# Esters
+C(=O)OC	Methyl formate	Ester
+CC(=O)OC	Methyl acetate	Ester
+CCC(=O)OC	Methyl propionate	Ester
+CCCC(=O)OC	Methyl butyrate	Ester
+C(=O)OCC	Ethyl formate	Ester
+CC(=O)OCC	Ethyl acetate	Ester
+CCC(=O)OCC	Ethyl propionate	Ester
+CCCC(=O)OCC	Ethyl butyrate	Ester
+
+# Amides
+C(=O)N	Formamide	Amide
+CC(=O)N	Acetamide	Amide
+CCC(=O)N	Propionamide	Amide
+CCCC(=O)N	Butyramide	Amide
+c1ccccc1C(=O)N	Benzamide	Amide
+
+# Nitriles
+C#N	Hydrogen cyanide	Nitrile
+CC#N	Acetonitrile	Nitrile
+CCC#N	Propionitrile	Nitrile
+CCCC#N	Butyronitrile	Nitrile
+c1ccccc1C#N	Benzonitrile	Nitrile
+
+# Sulfur Compounds
+CS	Methanethiol	Sulfur
+CCS	Ethanethiol	Sulfur
+CCCS	Propanethiol	Sulfur
+CCCCS	Butanethiol	Sulfur
+C(=O)S	Thioformic acid	Sulfur
+CC(=O)S	Thioacetic acid	Sulfur
+CCC(=O)S	Thiopropionic acid	Sulfur
+
+# Phosphorus Compounds
+CP	Methylphosphine	Phosphorus
+CCP	Ethylphosphine	Phosphorus
+CCCP	Propylphosphine	Phosphorus
+CCCCP	Butylphosphine	Phosphorus
+C(=O)P	Phosphinoformic acid	Phosphorus
+CC(=O)P	Phosphinoacetic acid	Phosphorus
+
+# Boron Compounds
+CB	Methylborane	Boron
+CCB	Ethylborane	Boron
+CCCB	Propylborane	Boron
+CCCCB	Butylborane	Boron
+c1ccccc1B(O)O	Phenylboronic acid	Boron
+CCB(O)O	Ethylboronic acid	Boron
+CCCB(O)O	Propylboronic acid	Boron
+
+# Silicon Compounds
+C[SiH3]	Methylsilane	Silicon
+CC[SiH3]	Ethylsilane	Silicon
+CCC[SiH3]	Propylsilane	Silicon
+CCCC[SiH3]	Butylsilane	Silicon
+C[Si](C)(C)C	Tetramethylsilane	Silicon
+CC[Si](CC)(CC)CC	Hexaethyldisilane	Silicon
+
+# Metal Complexes
+[Cu+]	Copper(I)	Metal
+[Cu+2]	Copper(II)	Metal
+[Fe+2]	Iron(II)	Metal
+[Fe+3]	Iron(III)	Metal
+[Ni+2]	Nickel(II)	Metal
+[Pd+2]	Palladium(II)	Metal
+[Pt+2]	Platinum(II)	Metal
+[Ag+]	Silver(I)	Metal
+[Au+]	Gold(I)	Metal
+[Au+3]	Gold(III)	Metal
+
+# Radicals
+C[CH2]	Methyl radical	Radical
+CC[CH2]	Ethyl radical	Radical
+CCC[CH2]	Propyl radical	Radical
+CCCC[CH2]	Butyl radical	Radical
+[CH3]	Methyl radical	Radical
+[CH2CH3]	Ethyl radical	Radical
+[CH2CH2CH3]	Propyl radical	Radical
+[CH2CH2CH2CH3]	Butyl radical	Radical
+
+# Ions
+[H+]	Proton	Ion
+[H-]	Hydride	Ion
+[Na+]	Sodium cation	Ion
+[K+]	Potassium cation	Ion
+[Li+]	Lithium cation	Ion
+[Ca+2]	Calcium cation	Ion
+[Mg+2]	Magnesium cation	Ion
+[NH4+]	Ammonium cation	Ion
+[OH-]	Hydroxide anion	Ion
+[Cl-]	Chloride anion	Ion
+[Br-]	Bromide anion	Ion
+[I-]	Iodide anion	Ion
+[F-]	Fluoride anion	Ion
+[O-2]	Oxide anion	Ion
+[S-2]	Sulfide anion	Ion
+[N-3]	Nitride anion	Ion
+[P-3]	Phosphide anion	Ion
+[As-3]	Arsenide anion	Ion

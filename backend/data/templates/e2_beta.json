@@ -1,0 +1,39 @@
+{
+  "template_id": "e2_beta",
+  "name": "E2 Elimination - Beta Elimination",
+  "rxn_smarts": "[C:1][C:2][Br:3].[OH:4]>>[C:1]=[C:2].[Br:3].[OH:4]",
+  "scope": "Anti-periplanar elimination of H and leaving group from adjacent carbons. Requires strong base and anti-periplanar geometry.",
+  "limitations": "Requires anti-periplanar geometry. Competing SN2 can occur with primary substrates. Zaitsev's rule predicts major product.",
+  "default_conditions_id": "e2_conditions",
+  "refs": ["ref_e2_mechanism", "ref_zaitsev_rule"],
+  "examples": [
+    {
+      "reactants": ["CCBr", "OH"],
+      "products": ["C=C", "Br", "OH"],
+      "description": "Ethyl bromide to ethene"
+    },
+    {
+      "reactants": ["CCCBr", "OH"],
+      "products": ["CC=C", "Br", "OH"],
+      "description": "Propyl bromide to propene"
+    }
+  ],
+  "mechanism_type": "e2",
+  "arrow_hints": [
+    {
+      "type": "lp_to_bond",
+      "from": "O",
+      "to": "H"
+    },
+    {
+      "type": "bond_to_atom",
+      "from": "C-Br",
+      "to": "Br"
+    },
+    {
+      "type": "bond_to_bond",
+      "from": "C-H",
+      "to": "C=C"
+    }
+  ]
+} 

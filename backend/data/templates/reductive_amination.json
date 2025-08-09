@@ -1,0 +1,29 @@
+{
+  "template_id": "reductive_amination",
+  "name": "Reductive Amination",
+  "rxn_smarts": "[C:1]=[O:2].[NH2:3]>>[C:1][NH:3]",
+  "scope": "Carbonyl compounds with amines to form amines. Uses reducing agents like NaBH4, NaBH3CN, or catalytic hydrogenation.",
+  "limitations": "Imine formation can be reversible. Competing reduction of carbonyl can occur. Some substrates may be incompatible.",
+  "default_conditions_id": "reductive_amination_conditions",
+  "refs": ["ref_reductive_amination", "ref_imine_formation"],
+  "examples": [
+    {
+      "reactants": ["C=O", "NH2"],
+      "products": ["CN"],
+      "description": "Formaldehyde + ammonia to methylamine"
+    }
+  ],
+  "mechanism_type": "reductive_amination",
+  "arrow_hints": [
+    {
+      "type": "lp_to_bond",
+      "from": "N",
+      "to": "C"
+    },
+    {
+      "type": "bond_to_bond",
+      "from": "C=O",
+      "to": "C-N"
+    }
+  ]
+} 

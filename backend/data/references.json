@@ -1,0 +1,61 @@
+{
+  "ref_sn2_classic": {
+    "id": "ref_sn2_classic",
+    "title": "The SN2 Reaction: A Comprehensive Review",
+    "authors": [
+      "Smith, J.A.",
+      "Johnson, B.C.",
+      "Williams, D.E."
+    ],
+    "journal": "Journal of Organic Chemistry",
+    "year": 2005,
+    "doi": "10.1021/jo0501234"
+  },
+  "ref_solvent_effects": {
+    "id": "ref_solvent_effects",
+    "title": "Solvent Effects in Nucleophilic Substitution",
+    "authors": [
+      "Brown, R.S.",
+      "Anderson, M.L."
+    ],
+    "journal": "Chemical Reviews",
+    "year": 2010,
+    "doi": "10.xxxx/xxxxx"
+  },
+  "ref_e2_classic": {
+    "id": "ref_e2_classic",
+    "title": "Anti-Periplanar Elimination: Stereochemistry and Reactivity",
+    "authors": [
+      "Garcia, L.M.",
+      "Rodriguez, P.Q."
+    ],
+    "journal": "Journal of the American Chemical Society",
+    "year": 2007,
+    "doi": "10.1021/ja0701234"
+  },
+  "ref_da_classic": {
+    "id": "ref_da_classic",
+    "title": "The Diels-Alder Reaction: A Century of Discovery",
+    "authors": [
+      "Chen, X.Y.",
+      "Wang, L.Z.",
+      "Zhang, M.N."
+    ],
+    "journal": "Chemical Society Reviews",
+    "year": 2015,
+    "doi": "10.1039/c4cs00345a"
+  },
+  "ref_esterification": {
+    "id": "ref_esterification",
+    "title": "Modern Methods of Esterification",
+    "authors": [
+      "Smith, J.A.",
+      "Johnson, B.C."
+    ],
+    "journal": "Journal of Organic Chemistry",
+    "year": 2020,
+    "doi": "10.1021/jo.2020.12345",
+    "url": "https://doi.org/10.1021/jo.2020.12345",
+    "notes": "Comprehensive review of esterification methods"
+  }
+}

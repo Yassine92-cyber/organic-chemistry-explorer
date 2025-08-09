@@ -1,0 +1,140 @@
+{
+  "knowledge_base_version": "1.0.0",
+  "last_updated": "2024-01-01",
+  "description": "Retrosynthesis Knowledge Base with reaction templates, conditions, references, and stock molecules",
+  "data_files": {
+    "templates": {
+      "directory": "templates/",
+      "count": 10,
+      "files": [
+        "sn2_primary.json",
+        "sn1_tertiary.json",
+        "e2_beta.json",
+        "fischer_ester.json",
+        "amide_coupling.json",
+        "suzuki.json",
+        "buchwald.json",
+        "reductive_amination.json",
+        "aldol.json",
+        "diels_alder.json"
+      ],
+      "description": "Reaction templates with SMARTS patterns and metadata"
+    },
+    "conditions": {
+      "directory": "conditions/",
+      "count": 10,
+      "files": [
+        "sn2_conditions.json",
+        "sn1_conditions.json",
+        "e2_conditions.json",
+        "fischer_conditions.json",
+        "amide_conditions.json",
+        "suzuki_conditions.json",
+        "buchwald_conditions.json",
+        "reductive_amination_conditions.json",
+        "aldol_conditions.json",
+        "diels_alder_conditions.json"
+      ],
+      "description": "Reaction conditions with reagents, solvents, and parameters"
+    },
+    "references": {
+      "directory": "refs/",
+      "count": 20,
+      "files": [
+        "ref_sn2_mechanism.json",
+        "ref_solvent_effects.json",
+        "ref_sn1_mechanism.json",
+        "ref_carbocation_stability.json",
+        "ref_e2_mechanism.json",
+        "ref_zaitsev_rule.json",
+        "ref_fischer_ester.json",
+        "ref_acid_catalysis.json",
+        "ref_amide_coupling.json",
+        "ref_coupling_reagents.json",
+        "ref_suzuki_coupling.json",
+        "ref_palladium_catalysis.json",
+        "ref_buchwald_amination.json",
+        "ref_palladium_ligands.json",
+        "ref_reductive_amination.json",
+        "ref_imine_formation.json",
+        "ref_aldol_reaction.json",
+        "ref_enolate_chemistry.json",
+        "ref_diels_alder.json",
+        "ref_cycloaddition.json"
+      ],
+      "description": "Bibliographic references for reaction mechanisms and applications"
+    },
+    "stock_molecules": {
+      "file": "stock_molecules.smi",
+      "count": 150,
+      "description": "Stock molecules in SMILES format with categories"
+    },
+    "suppliers_catalog": {
+      "file": "suppliers_catalog.json",
+      "count": 50,
+      "description": "Supplier catalog with pricing and availability information"
+    }
+  },
+  "statistics": {
+    "total_templates": 10,
+    "total_conditions": 10,
+    "total_references": 20,
+    "total_stock_molecules": 150,
+    "total_supplier_entries": 50,
+    "reaction_types": [
+      "SN2",
+      "SN1",
+      "E2",
+      "Fischer esterification",
+      "Amide coupling",
+      "Suzuki coupling",
+      "Buchwald-Hartwig amination",
+      "Reductive amination",
+      "Aldol reaction",
+      "Diels-Alder cycloaddition"
+    ],
+    "molecule_categories": [
+      "Solvent",
+      "Base",
+      "Reagent",
+      "Alcohol",
+      "Carboxylic acid",
+      "Amine",
+      "Halide",
+      "Nucleophile",
+      "Leaving Group",
+      "Building Block",
+      "Aromatic",
+      "Heterocycle",
+      "Aldehyde",
+      "Ketone",
+      "Ester",
+      "Amide",
+      "Nitrile",
+      "Sulfur",
+      "Phosphorus",
+      "Boron",
+      "Silicon",
+      "Metal",
+      "Radical",
+      "Ion"
+    ]
+  },
+  "metadata": {
+    "created_by": "Retrosynthesis Team",
+    "license": "MIT",
+    "format_version": "1.0",
+    "compatibility": {
+      "rdkit_version": ">=2023.9.1",
+      "python_version": ">=3.11",
+      "fastapi_version": ">=0.104.0"
+    }
+  },
+  "validation": {
+    "templates_validated": true,
+    "conditions_validated": true,
+    "references_validated": true,
+    "smiles_validated": true,
+    "last_validation": "2024-01-01T00:00:00Z"
+  }
+}

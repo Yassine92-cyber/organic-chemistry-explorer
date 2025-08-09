@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "last_updated": "",
+  "suppliers": {
+    "sigma_aldrich": {
+      "name": "Sigma-Aldrich",
+      "website": "https://www.sigmaaldrich.com",
+      "catalog_url_template": "https://www.sigmaaldrich.com/catalog/product/sigma/{catalog_id}"
+    },
+    "fisher_scientific": {
+      "name": "Fisher Scientific",
+      "website": "https://www.fishersci.com",
+      "catalog_url_template": "https://www.fishersci.com/shop/products/{catalog_id}"
+    },
+    "alfa_aesar": {
+      "name": "Alfa Aesar",
+      "website": "https://www.alfa.com",
+      "catalog_url_template": "https://www.alfa.com/en/catalog/{catalog_id}/"
+    }
+  },
+  "molecules": {}
+}

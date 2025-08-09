@@ -1,0 +1,16 @@
+{
+  "condition_id": "buchwald_conditions",
+  "name": "Buchwald-Hartwig Amination Conditions",
+  "reagents": ["Pd2(dba)3", "BINAP", "t-BuONa", "Cs2CO3"],
+  "solvent": "Toluene",
+  "temperature": "100°C",
+  "time": "4-24 hours",
+  "catalyst": "Pd2(dba)3",
+  "base": "t-BuONa",
+  "acid": null,
+  "oxidant": null,
+  "reductant": null,
+  "notes": "Various ligands available (BINAP, Xantphos, etc.). Base choice critical for success.",
+  "yield_range": "50-95%",
+  "scale": "mmol to mol"
+} 

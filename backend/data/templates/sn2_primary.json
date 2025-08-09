@@ -1,0 +1,34 @@
+{
+  "template_id": "sn2_primary",
+  "name": "SN2 Nucleophilic Substitution - Primary Halides",
+  "rxn_smarts": "[C:1][Br:2].[OH:3]>>[C:1][O:3].[Br:2]",
+  "scope": "Primary alkyl halides (methyl, ethyl, propyl, butyl) with nucleophiles. Works best with strong nucleophiles like hydroxide, alkoxides, thiolates, and amines.",
+  "limitations": "Does not work with tertiary halides (E1/E2 favored). Sterically hindered primary halides may show reduced reactivity. Sensitive to solvent effects.",
+  "default_conditions_id": "sn2_conditions",
+  "refs": ["ref_sn2_mechanism", "ref_solvent_effects"],
+  "examples": [
+    {
+      "reactants": ["CBr", "OH"],
+      "products": ["COH", "Br"],
+      "description": "Methyl bromide to methanol"
+    },
+    {
+      "reactants": ["CCBr", "OH"],
+      "products": ["CCOH", "Br"],
+      "description": "Ethyl bromide to ethanol"
+    }
+  ],
+  "mechanism_type": "sn2",
+  "arrow_hints": [
+    {
+      "type": "lp_to_bond",
+      "from": "O",
+      "to": "C"
+    },
+    {
+      "type": "bond_to_atom",
+      "from": "C-Br",
+      "to": "Br"
+    }
+  ]
+} 

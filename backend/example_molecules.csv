@@ -1,0 +1,6 @@
+name,smiles,source,price,purity,cas,catalog_number,notes
+Benzyl alcohol,c1ccccc1CO,Sigma-Aldrich,25.50,99.0,100-51-6,B1032,Common reagent
+Acetic acid,CC(=O)O,Fisher Scientific,15.75,99.7,64-19-7,A38-500,Glacial acetic acid
+Toluene,c1ccccc1C,Sigma-Aldrich,12.30,99.8,108-88-3,T324,Common solvent
+Benzene,c1ccccc1,Sigma-Aldrich,8.90,99.9,71-43-2,B1794,Common solvent
+Phenol,c1ccccc1O,Sigma-Aldrich,18.20,99.0,108-95-2,P1037,Common reagent 

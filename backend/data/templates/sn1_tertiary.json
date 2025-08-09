@@ -1,0 +1,29 @@
+{
+  "template_id": "sn1_tertiary",
+  "name": "SN1 Nucleophilic Substitution - Tertiary Halides",
+  "rxn_smarts": "[C:1]([C:2])([C:3])[Br:4].[OH:5]>>[C:1]([C:2])([C:3])[O:5].[Br:4]",
+  "scope": "Tertiary alkyl halides with weak nucleophiles. Favored in polar protic solvents. Carbocation intermediate formation is rate-determining.",
+  "limitations": "Racemization occurs due to planar carbocation intermediate. Competing E1 elimination can be significant. Requires polar protic solvents.",
+  "default_conditions_id": "sn1_conditions",
+  "refs": ["ref_sn1_mechanism", "ref_carbocation_stability"],
+  "examples": [
+    {
+      "reactants": ["C(C)(C)Br", "OH"],
+      "products": ["C(C)(C)OH", "Br"],
+      "description": "t-butyl bromide to t-butanol"
+    }
+  ],
+  "mechanism_type": "sn1",
+  "arrow_hints": [
+    {
+      "type": "bond_to_atom",
+      "from": "C-Br",
+      "to": "Br"
+    },
+    {
+      "type": "lp_to_bond",
+      "from": "O",
+      "to": "C"
+    }
+  ]
+} 

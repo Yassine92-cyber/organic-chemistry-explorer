@@ -1,0 +1,14 @@
+{
+  "ref_id": "ref_diels_alder",
+  "title": "The Diels-Alder Reaction",
+  "authors": ["Diels, O.", "Alder, K."],
+  "journal": "Justus Liebigs Annalen der Chemie",
+  "year": 1928,
+  "volume": "460",
+  "pages": "98-122",
+  "doi": "10.1002/jlac.19284600106",
+  "url": "https://doi.org/10.1002/jlac.19284600106",
+  "abstract": "Original paper describing the Diels-Alder cycloaddition reaction.",
+  "keywords": ["Diels-Alder", "cycloaddition", "[4+2]", "diene", "dienophile"],
+  "citation": "Diels, O.; Alder, K. Justus Liebigs Ann. Chem. 1928, 460, 98-122."
+} 

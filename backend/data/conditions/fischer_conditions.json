@@ -1,0 +1,16 @@
+{
+  "condition_id": "fischer_conditions",
+  "name": "Fischer Esterification Conditions",
+  "reagents": ["ROH", "H2SO4"],
+  "solvent": "ROH",
+  "temperature": "reflux",
+  "time": "2-24 hours",
+  "catalyst": "H2SO4",
+  "base": null,
+  "acid": "H2SO4",
+  "oxidant": null,
+  "reductant": null,
+  "notes": "Equilibrium reaction. Water removal (Dean-Stark) can drive reaction forward. Excess alcohol helps.",
+  "yield_range": "60-95%",
+  "scale": "mmol to mol"
+} 

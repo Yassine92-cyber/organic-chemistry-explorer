@@ -1,0 +1,16 @@
+{
+  "condition_id": "diels_alder_conditions",
+  "name": "Diels-Alder Cycloaddition Conditions",
+  "reagents": ["Lewis acid"],
+  "solvent": "DCM",
+  "temperature": "25-100°C",
+  "time": "1-24 hours",
+  "catalyst": "Lewis acid",
+  "base": null,
+  "acid": null,
+  "oxidant": null,
+  "reductant": null,
+  "notes": "Can be catalyzed by Lewis acids (AlCl3, BF3). High pressure can accelerate reaction.",
+  "yield_range": "70-95%",
+  "scale": "mmol to mol"
+} 

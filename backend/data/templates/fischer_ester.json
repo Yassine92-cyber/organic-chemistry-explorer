@@ -1,0 +1,34 @@
+{
+  "template_id": "fischer_ester",
+  "name": "Fischer Esterification",
+  "rxn_smarts": "[C:1][C:2](=[O:3])[OH:4].[OH:5]>>[C:1][C:2](=[O:3])[O:5].[OH:4]",
+  "scope": "Carboxylic acids with alcohols in acidic conditions. Equilibrium reaction that can be driven by removal of water or excess alcohol.",
+  "limitations": "Equilibrium reaction, requires acid catalyst. Water removal often needed for high yields. Some acids may decarboxylate under conditions.",
+  "default_conditions_id": "fischer_conditions",
+  "refs": ["ref_fischer_ester", "ref_acid_catalysis"],
+  "examples": [
+    {
+      "reactants": ["CC(=O)O", "CO"],
+      "products": ["CC(=O)OC", "OH"],
+      "description": "Acetic acid + methanol to methyl acetate"
+    },
+    {
+      "reactants": ["c1ccccc1C(=O)O", "CO"],
+      "products": ["c1ccccc1C(=O)OC", "OH"],
+      "description": "Benzoic acid + methanol to methyl benzoate"
+    }
+  ],
+  "mechanism_type": "esterification",
+  "arrow_hints": [
+    {
+      "type": "lp_to_bond",
+      "from": "O",
+      "to": "C"
+    },
+    {
+      "type": "bond_to_atom",
+      "from": "C-OH",
+      "to": "OH"
+    }
+  ]
+} 

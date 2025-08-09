@@ -1,0 +1,14 @@
+{
+  "ref_id": "ref_zaitsev_rule",
+  "title": "The Rule of Zaitsev",
+  "authors": ["Zaitsev, A.M."],
+  "journal": "Justus Liebigs Annalen der Chemie",
+  "year": 1875,
+  "volume": "179",
+  "pages": "296-301",
+  "doi": "10.1002/jlac.18751790304",
+  "url": "https://doi.org/10.1002/jlac.18751790304",
+  "abstract": "Original paper establishing the rule for elimination product formation.",
+  "keywords": ["Zaitsev", "elimination", "regioselectivity", "alkene formation"],
+  "citation": "Zaitsev, A.M. Justus Liebigs Ann. Chem. 1875, 179, 296-301."
+} 

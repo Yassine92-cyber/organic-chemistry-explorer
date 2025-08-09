@@ -1,0 +1,29 @@
+{
+  "template_id": "buchwald",
+  "name": "Buchwald-Hartwig Amination",
+  "rxn_smarts": "[C:1][Br:2].[NH2:3]>>[C:1][NH:3].[Br:2]",
+  "scope": "Aryl halides with amines to form aryl amines. Palladium-catalyzed with various ligands and bases.",
+  "limitations": "Requires palladium catalyst and specific ligands. Base choice is critical. Some functional groups may interfere.",
+  "default_conditions_id": "buchwald_conditions",
+  "refs": ["ref_buchwald_amination", "ref_palladium_ligands"],
+  "examples": [
+    {
+      "reactants": ["c1ccccc1Br", "NH2"],
+      "products": ["c1ccccc1N", "Br"],
+      "description": "Bromobenzene + ammonia to aniline"
+    }
+  ],
+  "mechanism_type": "buchwald",
+  "arrow_hints": [
+    {
+      "type": "lp_to_bond",
+      "from": "N",
+      "to": "C"
+    },
+    {
+      "type": "bond_to_atom",
+      "from": "C-Br",
+      "to": "Br"
+    }
+  ]
+} 

@@ -1,0 +1,17 @@
+{
+  "id": "sn2_retro",
+  "name": "SN2 Retrosynthesis - Nucleophilic Substitution",
+  "rxn_smarts": "[C:1][O:2]>>[C:1][Br:3].[OH:2]",
+  "scope": "Retrosynthetic disconnection of C-O bonds to form alkyl halides",
+  "selectivity_notes": "Reverse of SN2 reaction, useful for retrosynthetic planning",
+  "default_conditions_id": "cond_sn2_dmso_rt",
+  "scores": {
+    "feasibility": 0.8,
+    "greenness": 0.6,
+    "route_cost": 3.2
+  },
+  "refs": [
+    "ref_sn2_classic",
+    "ref_solvent_effects"
+  ]
+} 

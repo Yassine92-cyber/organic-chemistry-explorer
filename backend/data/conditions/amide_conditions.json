@@ -1,0 +1,16 @@
+{
+  "condition_id": "amide_conditions",
+  "name": "Amide Coupling Conditions",
+  "reagents": ["DCC", "EDC", "HATU", "TBTU"],
+  "solvent": "DCM",
+  "temperature": "25°C",
+  "time": "2-24 hours",
+  "catalyst": null,
+  "base": "TEA",
+  "acid": null,
+  "oxidant": null,
+  "reductant": null,
+  "notes": "Various coupling reagents available. DCC forms DCU byproduct. HATU often gives best yields.",
+  "yield_range": "70-95%",
+  "scale": "mmol to mol"
+} 

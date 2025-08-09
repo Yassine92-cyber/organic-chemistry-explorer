@@ -1,0 +1,29 @@
+{
+  "template_id": "e2_elimination",
+  "name": "E2 elimination",
+  "rxn_smarts": "[C:1][C:2][Br,Cl,I:3].[OH:4]>>[C:1]=[C:2].[Br-,Cl-,I-:3].[OH2:4]",
+  "scope": "Secondary and tertiary alkyl halides with strong bases",
+  "selectivity_notes": "Anti-periplanar elimination geometry required",
+  "default_conditions_id": "cond_e2_etoh_rt",
+  "refs": ["ref_e2_classic"],
+  "examples": [
+    {
+      "reactants": ["CC(C)Br", "OH"],
+      "products": ["C=C(C)", "Br", "OH2"],
+      "description": "Tert-butyl bromide elimination"
+    }
+  ],
+  "mechanism_type": "e2",
+  "arrow_hints": [
+    {
+      "type": "lp_to_bond",
+      "from": "O",
+      "to": "H"
+    },
+    {
+      "type": "bond_to_atom",
+      "from": "C-Br",
+      "to": "Br"
+    }
+  ]
+}

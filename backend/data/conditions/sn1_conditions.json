@@ -1,0 +1,16 @@
+{
+  "condition_id": "sn1_conditions",
+  "name": "SN1 Nucleophilic Substitution Conditions",
+  "reagents": ["H2O", "ROH"],
+  "solvent": "H2O",
+  "temperature": "25-80°C",
+  "time": "1-24 hours",
+  "catalyst": "H2SO4",
+  "base": null,
+  "acid": "H2SO4",
+  "oxidant": null,
+  "reductant": null,
+  "notes": "Polar protic solvents favor carbocation formation. Ag+ can help with leaving group departure.",
+  "yield_range": "40-85%",
+  "scale": "mmol to mol"
+} 
