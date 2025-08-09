@@ -1,7 +1,7 @@
 # Core FastAPI and Server
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
-pydantic==2.5.0
+pydantic==2.11.7
 
 # Data Processing and Chemistry
 rdkit-pypi==2023.3.1b1
