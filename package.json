@@ -1,11 +1,12 @@
 {
   "name": "retrosynthesis-explorer",
-  "private": true,
+  "private": false,
   "version": "1.2.0",
   "type": "module",
   "description": "Advanced retrosynthesis analysis and mechanism exploration tool",
   "author": "Retrosynthesis Team",
   "license": "MIT",
+  "homepage": "https://Yassine92-cyber.github.io/organic-chemistry-explorer/",
   "keywords": ["chemistry", "retrosynthesis", "molecules", "rdkit", "organic-chemistry"],
   "scripts": {
     "dev": "vite",

@@ -29,15 +29,24 @@ jobs:
 
       - name: Install dependencies
         run: |
+          echo "Installing dependencies..."
           npm ci || npm i
+          echo "Dependencies installed successfully"
 
       - name: Build
         env:
-          VITE_BASE: ${{ secrets.VITE_BASE }}
+          VITE_BASE: ${{ secrets.VITE_BASE || '/organic-chemistry-explorer/' }}
         run: |
+          echo "Building with VITE_BASE: $VITE_BASE"
           npm run build
           npm run postbuild
 
+      - name: List build output
+        run: |
+          echo "Build output contents:"
+          ls -la dist/
+          echo "File count: $(find dist -type f | wc -l)"
+          
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -49,6 +58,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
