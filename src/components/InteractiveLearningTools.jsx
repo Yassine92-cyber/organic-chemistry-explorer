@@ -657,7 +657,7 @@ const InteractiveLearningTools = () => {
       difficulty: 'Intermediate',
       yield: '85-95%',
       procedure: {
-        steps: [
+      steps: [
           'Dry DMSO (10 mL) under nitrogen atmosphere',
           'Add sodium methoxide (1.2 equiv, 0.648 g) to DMSO',
           'Stir at room temperature for 15 minutes',
@@ -737,7 +737,7 @@ const InteractiveLearningTools = () => {
       difficulty: 'Advanced',
       yield: '70-85%',
       procedure: {
-        steps: [
+      steps: [
           'Prepare 0.2 M sodium ethoxide in dry ethanol (25 mL)',
           'Heat solution to 80°C under reflux condenser',
           'Add neopentyl bromide (1.0 equiv, 1.51 g) slowly',
@@ -820,7 +820,7 @@ const InteractiveLearningTools = () => {
       difficulty: 'Advanced',
       yield: '60-75%',
       procedure: {
-        steps: [
+      steps: [
           'Prepare 0.1 M NaOH solution and cool to 0°C in ice bath',
           'Add acetone (1.0 equiv, 0.58 g) dropwise with stirring',
           'Allow enolate formation for 30 minutes at 0°C',
@@ -1442,7 +1442,7 @@ const InteractiveLearningTools = () => {
                 <text x="150" y="180" fontSize="12" textAnchor="middle">Energy: -10.5 eV</text>
               </svg>
             );
-          } else {
+      } else {
             return (
               <svg width="300" height="200" viewBox="0 0 300 200">
                 {/* π* antibonding orbital */}
@@ -1821,7 +1821,7 @@ const InteractiveLearningTools = () => {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
                     {quizQuestions[quizCategory][currentQuiz].options.map((option, index) => (
-                      <button
+        <button
                         key={index}
                         onClick={() => handleQuizAnswer(index)}
                         disabled={showQuizResult}
@@ -1836,7 +1836,7 @@ const InteractiveLearningTools = () => {
                         }`}
                       >
                         {String.fromCharCode(65 + index)}. {option}
-                      </button>
+        </button>
                     ))}
                   </div>
 
@@ -1844,12 +1844,12 @@ const InteractiveLearningTools = () => {
                     <div className="mt-4 p-4 bg-blue-50 rounded-lg">
                       <h4 className="font-semibold text-blue-900 mb-2">Explanation:</h4>
                       <p className="text-blue-800">{quizQuestions[quizCategory][currentQuiz].explanation}</p>
-                      <button
+        <button
                         onClick={nextQuiz}
                         className="mt-3 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
                       >
                         Next Question
-                      </button>
+        </button>
                     </div>
                   )}
                 </div>
@@ -1899,19 +1899,19 @@ const InteractiveLearningTools = () => {
                   />
                 </div>
 
-                <button
+        <button
                   onClick={() => setMoleculeProperties(calculateProperties(calcMolecule))}
                   className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 mb-4"
                 >
                   Calculate Properties
-                </button>
+        </button>
 
                 {/* Quick molecule buttons */}
                 <div className="mb-4">
                   <h3 className="font-medium mb-2">Quick Examples:</h3>
                   <div className="flex flex-wrap gap-2">
                     {['CCO', 'c1ccccc1', 'CC(=O)O', 'CN', 'C=C'].map((smiles) => (
-                      <button
+        <button
                         key={smiles}
                         onClick={() => {
                           setCalcMolecule(smiles);
@@ -1920,10 +1920,10 @@ const InteractiveLearningTools = () => {
                         className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 text-sm"
                       >
                         {smiles}
-                      </button>
+        </button>
                     ))}
                   </div>
-                </div>
+      </div>
 
                 {/* Molecule visualization */}
                 <div className="bg-gray-50 rounded-lg p-4">
@@ -1934,7 +1934,7 @@ const InteractiveLearningTools = () => {
                 </div>
               </div>
 
-              <div>
+          <div>
                 {moleculeProperties && (
                   <div className="bg-gray-50 rounded-lg p-4">
                     <h3 className="font-medium mb-4">Calculated Properties:</h3>
@@ -2061,8 +2061,8 @@ const InteractiveLearningTools = () => {
                           <div><strong>Rate:</strong> {simulatorResults.rate}</div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+              </div>
+            </div>
 
                   {/* Detailed Procedure */}
                   {simulatorResults.procedure && (
@@ -2210,11 +2210,11 @@ const InteractiveLearningTools = () => {
                             />
                           ))}
                         </div>
-                      </div>
+            </div>
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Custom Conditions:</label>
-                        <input
+                <input
                           type="text"
                           value={simulatorConditions}
                           onChange={(e) => setSimulatorConditions(e.target.value)}
@@ -2229,9 +2229,9 @@ const InteractiveLearningTools = () => {
                         </button>
                       </div>
                     </div>
-                  </div>
-                </div>
-              )}
+            </div>
+          </div>
+        )}
 
               {/* Initial Prompt */}
               {!simulatorResults && (
@@ -2260,8 +2260,8 @@ const InteractiveLearningTools = () => {
                   className={`border rounded-lg p-6 cursor-pointer transition-all hover:shadow-lg ${
                     studyTopic === key
                       ? 'border-blue-500 bg-blue-50 shadow-md'
-                      : 'border-gray-200 hover:border-gray-300'
-                  }`}
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
                   onClick={() => setStudyTopic(key)}
                 >
                   <div className="flex items-center justify-between mb-3">
@@ -2310,8 +2310,8 @@ const InteractiveLearningTools = () => {
                     <div className="bg-white bg-opacity-20 rounded-lg p-3">
                       <div className="text-sm text-blue-100">Sections</div>
                       <div className="font-semibold">{studyTopics[studyTopic].content?.length || 3} topics</div>
-                    </div>
-                  </div>
+              </div>
+            </div>
 
                   {/* Prerequisites */}
                   {studyTopics[studyTopic].prerequisites && (
@@ -2326,7 +2326,7 @@ const InteractiveLearningTools = () => {
                       </div>
                     </div>
                   )}
-                </div>
+            </div>
 
                 {/* Content Sections */}
                 {studyTopics[studyTopic].content.map((section, index) => (
@@ -2338,7 +2338,7 @@ const InteractiveLearningTools = () => {
                         </span>
                         {section.section}
                       </h4>
-                    </div>
+                </div>
                     
                     <div className="p-6">
                       <p className="text-gray-700 mb-6 leading-relaxed">{section.text}</p>
@@ -2357,7 +2357,7 @@ const InteractiveLearningTools = () => {
                             </li>
                           ))}
                         </ul>
-                      </div>
+            </div>
 
                       {/* Additional Content based on section type */}
                       {section.examples && (
@@ -2370,8 +2370,8 @@ const InteractiveLearningTools = () => {
                               </li>
                             ))}
                           </ul>
-                        </div>
-                      )}
+          </div>
+        )}
 
                       {section.reactions && (
                         <div className="bg-orange-50 rounded-lg p-4 mb-4">
@@ -2461,7 +2461,7 @@ const InteractiveLearningTools = () => {
                   </h4>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+          <div>
                       <h5 className="font-medium text-gray-800 mb-2">Study Tips</h5>
                       <ul className="text-sm text-gray-600 space-y-1">
                         <li>• Review prerequisites before starting</li>
@@ -2531,26 +2531,26 @@ const InteractiveLearningTools = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input
+                <label className="flex items-center">
+                  <input
                       type="checkbox"
                       checked={showOrbitals}
                       onChange={(e) => setShowOrbitals(e.target.checked)}
-                      className="mr-2"
-                    />
+                    className="mr-2"
+                  />
                     Show Orbital Visualization
-                  </label>
-                  <label className="flex items-center">
-                    <input
+                </label>
+                <label className="flex items-center">
+                  <input
                       type="checkbox"
                       checked={showEnergyProfile}
                       onChange={(e) => setShowEnergyProfile(e.target.checked)}
-                      className="mr-2"
-                    />
+                    className="mr-2"
+                  />
                     Show Energy Diagram
-                  </label>
-                </div>
+                </label>
               </div>
+            </div>
 
               {/* Molecular Structure */}
               <div className="bg-gray-50 rounded-lg p-4">
@@ -2563,7 +2563,7 @@ const InteractiveLearningTools = () => {
               {/* Orbital Visualizations */}
               {showOrbitals && orbitalData[selectedMolecule] && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div>
+              <div>
                     <h3 className="font-medium mb-4">
                       {selectedOrbital} Visualization
                     </h3>
@@ -2580,12 +2580,12 @@ const InteractiveLearningTools = () => {
                         <div><strong>Energy:</strong> {orbitalData[selectedMolecule][selectedOrbital].energy} eV</div>
                         <div><strong>Symmetry:</strong> {orbitalData[selectedMolecule][selectedOrbital].symmetry}</div>
                         <div><strong>Description:</strong> {orbitalData[selectedMolecule][selectedOrbital].description}</div>
-                      </div>
-                    </div>
-                  </div>
+                </div>
+              </div>
+            </div>
 
                   {/* Alternative orbital */}
-                  <div>
+          <div>
                     <h3 className="font-medium mb-4">
                       {selectedOrbital === 'HOMO' ? 'LUMO' : 'HOMO'} Visualization
                     </h3>
@@ -2604,10 +2604,10 @@ const InteractiveLearningTools = () => {
                         <div><strong>Energy:</strong> {orbitalData[selectedMolecule][selectedOrbital === 'HOMO' ? 'LUMO' : 'HOMO'].energy} eV</div>
                         <div><strong>Symmetry:</strong> {orbitalData[selectedMolecule][selectedOrbital === 'HOMO' ? 'LUMO' : 'HOMO'].symmetry}</div>
                         <div><strong>Description:</strong> {orbitalData[selectedMolecule][selectedOrbital === 'HOMO' ? 'LUMO' : 'HOMO'].description}</div>
-                      </div>
-                    </div>
+                  </div>
                   </div>
                 </div>
+              </div>
               )}
 
               {/* Energy Diagram */}
@@ -2617,7 +2617,7 @@ const InteractiveLearningTools = () => {
                   <div className="flex justify-center">
                     <EnergyDiagram molecule={selectedMolecule} />
                   </div>
-                </div>
+                  </div>
               )}
 
               {/* Educational Information */}
@@ -2641,10 +2641,10 @@ const InteractiveLearningTools = () => {
                       <li>• <strong>Dashed lines:</strong> Nodal planes (zero electron density)</li>
                       <li>• <strong>Orbital overlap:</strong> Determines bond strength</li>
                     </ul>
-                  </div>
                 </div>
               </div>
-            </div>
+                  </div>
+                  </div>
           </div>
         )}
 
@@ -2662,21 +2662,21 @@ const InteractiveLearningTools = () => {
                     </svg>
                     <div className="text-lg font-medium">Mechanism Drawing Canvas</div>
                     <div className="text-sm">Click tools to start drawing reaction mechanisms</div>
-                  </div>
                 </div>
               </div>
+            </div>
 
-              <div>
+                <div>
                 <div className="space-y-4">
                   <div className="bg-white border border-gray-200 rounded-lg p-4">
                     <h3 className="font-medium mb-3">Drawing Tools:</h3>
-                    <div className="space-y-2">
+                  <div className="space-y-2">
                       <button className="w-full text-left p-2 bg-gray-50 rounded hover:bg-gray-100">
                         🖊️ Draw Structure
-                      </button>
+                    </button>
                       <button className="w-full text-left p-2 bg-gray-50 rounded hover:bg-gray-100">
                         ➡️ Straight Arrow
-                      </button>
+                    </button>
                       <button className="w-full text-left p-2 bg-gray-50 rounded hover:bg-gray-100">
                         ↪️ Curved Arrow
                       </button>
@@ -2685,25 +2685,25 @@ const InteractiveLearningTools = () => {
                       </button>
                       <button className="w-full text-left p-2 bg-gray-50 rounded hover:bg-gray-100">
                         🔗 Bond Forming
-                      </button>
-                    </div>
+                    </button>
                   </div>
+                </div>
 
                   <div className="bg-white border border-gray-200 rounded-lg p-4">
                     <h3 className="font-medium mb-3">Common Mechanisms:</h3>
-                    <div className="space-y-2">
+                  <div className="space-y-2">
                       <button className="w-full text-left p-2 bg-blue-50 rounded hover:bg-blue-100 text-sm">
                         SN2 Substitution
-                      </button>
+                    </button>
                       <button className="w-full text-left p-2 bg-blue-50 rounded hover:bg-blue-100 text-sm">
                         E2 Elimination
-                      </button>
+                    </button>
                       <button className="w-full text-left p-2 bg-blue-50 rounded hover:bg-blue-100 text-sm">
                         Aldol Addition
                       </button>
                       <button className="w-full text-left p-2 bg-blue-50 rounded hover:bg-blue-100 text-sm">
                         Diels-Alder
-                      </button>
+                    </button>
                     </div>
                   </div>
 
