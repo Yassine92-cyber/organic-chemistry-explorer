@@ -22,7 +22,7 @@ python-multipart==0.0.6
 
 # Testing and Development
 pytest==7.4.3
-pytest-asyncio==0.21.1
+pytest-asyncio==1.1.0
 pytest-cov==4.1.0
 
 # Performance and Monitoring
