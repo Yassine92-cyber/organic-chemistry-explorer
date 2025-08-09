@@ -13,7 +13,7 @@ pyarrow==14.0.1
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 slowapi==0.1.9
-cryptography==41.0.7
+cryptography==45.0.6
 
 # HTTP and API
 httpx==0.25.2
