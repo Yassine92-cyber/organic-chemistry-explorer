@@ -58,7 +58,8 @@ export default defineConfig({
           // Vendor chunks for better caching
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'ui-vendor': ['lucide-react', 'clsx', 'tailwind-merge'],
-          'rdkit-vendor': ['@rdkit/rdkit'],
+          // Remove RDKit from manual chunks as it's externalized
+          // 'rdkit-vendor': ['@rdkit/rdkit'],
           'radix-vendor': [
             '@radix-ui/react-collapsible',
             '@radix-ui/react-progress', 
@@ -74,22 +75,24 @@ export default defineConfig({
     },
     
     // Compression and optimization settings
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        // Remove console.logs in production
-        drop_console: true,
-        drop_debugger: true,
-        // Remove unused code
-        dead_code: true,
-        // Optimize conditionals
-        conditionals: true
-      },
-      mangle: {
-        // Mangle variable names for smaller bundles
-        safari10: true
-      }
-    },
+    minify: 'esbuild', // Use esbuild instead of terser for faster builds
+    // Alternative terser options (uncomment if using terser)
+    // minify: 'terser',
+    // terserOptions: {
+    //   compress: {
+    //     // Remove console.logs in production
+    //     drop_console: true,
+    //     drop_debugger: true,
+    //     // Remove unused code
+    //     dead_code: true,
+    //     // Optimize conditionals
+    //     conditionals: true
+    //   },
+    //   mangle: {
+    //     // Mangle variable names for smaller bundles
+    //     safari10: true
+    //   }
+    // },
     
     // Source maps for debugging (disable in production for security)
     sourcemap: process.env.NODE_ENV === 'development',

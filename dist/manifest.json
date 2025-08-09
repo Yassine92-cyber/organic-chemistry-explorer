@@ -1,0 +1,33 @@
+{
+  "_radix-vendor-28affba3.js": {
+    "file": "assets/js/radix-vendor-28affba3.js",
+    "imports": [
+      "_react-vendor-40f8b733.js"
+    ]
+  },
+  "_react-vendor-40f8b733.js": {
+    "file": "assets/js/react-vendor-40f8b733.js"
+  },
+  "_ui-vendor-77eef205.js": {
+    "file": "assets/js/ui-vendor-77eef205.js",
+    "imports": [
+      "_react-vendor-40f8b733.js"
+    ]
+  },
+  "index.css": {
+    "file": "assets/css/index-828a503e.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "css": [
+      "assets/css/index-828a503e.css"
+    ],
+    "file": "assets/js/index-98e52cee.js",
+    "imports": [
+      "_radix-vendor-28affba3.js",
+      "_react-vendor-40f8b733.js"
+    ],
+    "isEntry": true,
+    "src": "index.html"
+  }
+}
