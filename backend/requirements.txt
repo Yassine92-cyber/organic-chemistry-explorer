@@ -17,7 +17,7 @@ cryptography==41.0.7
 
 # HTTP and API
 httpx==0.25.2
-requests==2.31.0
+requests==2.32.4
 python-multipart==0.0.6
 
 # Testing and Development
