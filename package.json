@@ -81,7 +81,7 @@
     "eslint-plugin-security": "^1.7.1",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
-    "lint-staged": "^15.0.2",
+    "lint-staged": "^16.1.5",
     "postcss": "^8.4.27",
     "prettier": "^3.0.3",
     "tailwindcss": "^3.3.3",
